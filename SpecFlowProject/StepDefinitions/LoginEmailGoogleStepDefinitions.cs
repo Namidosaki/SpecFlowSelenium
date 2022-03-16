@@ -1,5 +1,7 @@
 using GoogleLoginTest.Drivers;
 using GoogleLoginTest.Functions;
+using GoogleLoginTest.Models;
+using GoogleLoginTest.Storage;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -9,10 +11,12 @@ namespace GoogleLoginTest.StepDefinitions
     public class LoginEmailGoogleStepDefinitions
     {
         private readonly FunctionsForLoginGoogle _functionsForLoginGoogle;
+        private readonly CredentionalStorage _credentionalStorage;
 
         public LoginEmailGoogleStepDefinitions(BrowserDriver browserDriver)
         {
             _functionsForLoginGoogle = new FunctionsForLoginGoogle(browserDriver.Current);
+            _credentionalStorage = new CredentionalStorage();
         }
 
         [Given(@"open the Google website")]
@@ -21,10 +25,17 @@ namespace GoogleLoginTest.StepDefinitions
             _functionsForLoginGoogle.Open_Google();
         }
 
-        [When(@"enter the ""([^""]*)"" ""([^""]*)""")]
-        public void WhenEnterThe(string data, string field)
+        [When(@"enter the ""([^""]*)"" ""([^""]*)"" ""([^""]*)""")]
+        public void WhenEnterThe(string state, int data, string field)
         {
-            _functionsForLoginGoogle.Enter_Field(data, field);
+            var cred = new CredentionalModel();
+            if (state == "valid")
+                cred = _credentionalStorage.Credentions.Valid[data];
+            if (state == "invalid")
+                cred = _credentionalStorage.Credentions.Invalid[data];
+            
+
+            _functionsForLoginGoogle.Enter_Field(cred, field);
         }
 
         [When(@"click the ""([^""]*)"" button")]
@@ -52,7 +63,7 @@ namespace GoogleLoginTest.StepDefinitions
         public void ThenExpectedResultIsntOpened()
         {
             bool result = _functionsForLoginGoogle.Dont_Open_Mail();
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
     }
 }

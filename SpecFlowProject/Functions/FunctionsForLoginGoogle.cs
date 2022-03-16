@@ -1,4 +1,5 @@
 ﻿using System;
+using GoogleLoginTest.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -24,6 +25,7 @@ namespace GoogleLoginTest.Functions
         private IWebElement ButtonLoginElement => _webDriver.FindElement(By.Id("identifierNext"));
         private IWebElement PasswordElement => _webDriver.FindElement(By.Name("password"));
         private IWebElement ButtonPasswordElement => _webDriver.FindElement(By.Id("passwordNext"));
+        private IWebElement PhoneNumberElement => _webDriver.FindElement(By.Id("phoneNumberId"));
 
         public void Open_Google()
         {
@@ -31,19 +33,19 @@ namespace GoogleLoginTest.Functions
             wait.Until(url => url.PageSource != null);
         }
 
-        public void Enter_Field(string data, string field)
+        public void Enter_Field(CredentionalModel data, string field)
         {
             if (field == "login")
             {
                 wait.Until(search => search.FindElement(By.Id("identifierId")).Displayed);
                 LoginElement.Clear();
-                LoginElement.SendKeys(data);
+                LoginElement.SendKeys(data.Login);
             }
             if (field == "password")
             {
                 wait.Until(search => search.FindElement(By.Name("password")).Displayed);
                 PasswordElement.Clear();
-                PasswordElement.SendKeys(data);
+                PasswordElement.SendKeys(data.Password);
             }
         }
 
@@ -59,19 +61,23 @@ namespace GoogleLoginTest.Functions
 
         public bool Open_Mail()
         {
-            return wait.Until(waiting => waiting.Url.Contains(ExpectedResult));
+            Thread.Sleep(5000);
+            //wait.Until(waiting => waiting.Url.Contains(ExpectedResult));
+
+            return (_webDriver.Url.Contains(ExpectedResult) || PhoneNumberElement.Displayed);
         }
 
         public bool Dont_Open_Mail()
         {
             Thread.Sleep(1000);
-            return !_webDriver.Url.Contains(ExpectedResult);
+
+            return (!_webDriver.Url.Contains(ExpectedResult) && _webDriver.FindElements(By.Id("phoneNumberId")).Any());
         }
 
         public bool Dont_Open_Password_Page()
         {
             Thread.Sleep(1000);
-            return !_webDriver.Url.Contains("pwd");
+            return !_webDriver.Url.Contains("pwd") ;
         }
     }
 }

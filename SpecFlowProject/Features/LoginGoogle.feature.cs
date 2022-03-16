@@ -76,8 +76,8 @@ namespace GoogleLoginTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sign in to Google Mail with correct data")]
         [NUnit.Framework.CategoryAttribute("positive")]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts@gmail.com", "QWERty1982", null)]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts", "QWERty1982", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("1", "1", null)]
         public virtual void SignInToGoogleMailWithCorrectData(string login, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -115,13 +115,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("open the Google website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.When(string.Format("enter the \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("enter the \"valid\" \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
  testRunner.And("click the \"login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
- testRunner.When(string.Format("enter the \"{0}\" \"password\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("enter the \"valid\" \"{0}\" \"password\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.And("click the \"password\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -136,9 +136,9 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sign in to Google Mail with incorrect login")]
         [NUnit.Framework.CategoryAttribute("negative")]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts@gmail.com", null)]
-        [NUnit.Framework.TestCaseAttribute("examplers@gmail.com", null)]
-        [NUnit.Framework.TestCaseAttribute("examplers", null)]
+        [NUnit.Framework.TestCaseAttribute("0", null)]
+        [NUnit.Framework.TestCaseAttribute("1", null)]
+        [NUnit.Framework.TestCaseAttribute("2", null)]
         public virtual void SignInToGoogleMailWithIncorrectLogin(string login, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -175,7 +175,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("open the Google website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
- testRunner.When(string.Format("enter the \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("enter the \"invalid\" \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
  testRunner.And("click the \"login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -190,9 +190,9 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sign in to Google Mail with correct login and incorrect password")]
         [NUnit.Framework.CategoryAttribute("negative")]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts@gmail.com", "QWERty1982", null)]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts@gmail.com", "qwerty1982", null)]
-        [NUnit.Framework.TestCaseAttribute("exampleforteasts", "qwerty1982", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("1", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "2", null)]
         public virtual void SignInToGoogleMailWithCorrectLoginAndIncorrectPassword(string login, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -230,13 +230,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("open the Google website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
- testRunner.When(string.Format("enter the \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("enter the \"valid\" \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 33
  testRunner.And("click the \"login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
- testRunner.When(string.Format("enter the \"{0}\" \"password\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("enter the \"invalid\" \"{0}\" \"password\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 35
  testRunner.And("click the \"password\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
