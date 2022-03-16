@@ -57,9 +57,21 @@ namespace GoogleLoginTest.Functions
 
         }
 
-        public bool Result()
+        public bool Open_Mail()
         {
             return wait.Until(waiting => waiting.Url.Contains(ExpectedResult));
+        }
+
+        public bool Dont_Open_Mail()
+        {
+            Thread.Sleep(1000);
+            return !_webDriver.Url.Contains(ExpectedResult);
+        }
+
+        public bool Dont_Open_Password_Page()
+        {
+            Thread.Sleep(1000);
+            return !_webDriver.Url.Contains("pwd");
         }
     }
 }

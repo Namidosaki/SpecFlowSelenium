@@ -36,20 +36,23 @@ namespace GoogleLoginTest.StepDefinitions
         [Then(@"expected result is opened")]
         public void ThenExpectedResultIsOpened()
         {
-            bool result = _functionsForLoginGoogle.Result();
+            bool result = _functionsForLoginGoogle.Open_Mail();
             Assert.IsTrue(result);
+        
         }
 
         [Then(@"next page doesn't open")]
         public void ThenNextPageDoesntOpen()
         {
-            throw new PendingStepException();
+            bool result = _functionsForLoginGoogle.Dont_Open_Password_Page();
+            Assert.IsTrue(result);
         }
 
         [Then(@"expected result isn't opened")]
         public void ThenExpectedResultIsntOpened()
         {
-            throw new PendingStepException();
+            bool result = _functionsForLoginGoogle.Dont_Open_Mail();
+            Assert.IsTrue(result);
         }
     }
 }
