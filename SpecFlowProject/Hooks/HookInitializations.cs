@@ -11,12 +11,12 @@ namespace GoogleLoginTest.Hooks
         [Binding]
         public class SharedBrowserHooks
         {
-            [BeforeTestRun]
+            /*[BeforeScenario]
             public static void BeforeTestRun(ObjectContainer testThreadContainer)
             {
                 //Initialize a shared BrowserDriver in the global container
                 testThreadContainer.BaseContainer.Resolve<BrowserDriver>();
-            }
+            }*/
         }
     }
 }

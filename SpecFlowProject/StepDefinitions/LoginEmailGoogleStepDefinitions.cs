@@ -39,5 +39,17 @@ namespace GoogleLoginTest.StepDefinitions
             bool result = _functionsForLoginGoogle.Result();
             Assert.IsTrue(result);
         }
+
+        [Then(@"next page doesn't open")]
+        public void ThenNextPageDoesntOpen()
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"expected result isn't opened")]
+        public void ThenExpectedResultIsntOpened()
+        {
+            throw new PendingStepException();
+        }
     }
 }

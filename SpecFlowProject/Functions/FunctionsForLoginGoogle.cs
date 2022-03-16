@@ -6,7 +6,7 @@ namespace GoogleLoginTest.Functions
 {
     public class FunctionsForLoginGoogle
     {
-        private readonly IWebDriver _webDriver;
+        private IWebDriver _webDriver;
 
         public const int DefaultWaitInSeconds = 5;
         public WebDriverWait wait;
@@ -28,19 +28,20 @@ namespace GoogleLoginTest.Functions
         public void Open_Google()
         {
             _webDriver.Url = GoogleMailUrl;
+            wait.Until(url => url.PageSource != null);
         }
 
         public void Enter_Field(string data, string field)
         {
             if (field == "login")
             {
-                wait.Until(search => search.FindElement(By.Id("identifierId")));
+                wait.Until(search => search.FindElement(By.Id("identifierId")).Displayed);
                 LoginElement.Clear();
                 LoginElement.SendKeys(data);
             }
             if (field == "password")
             {
-                wait.Until(search => search.FindElement(By.Name("password")));
+                wait.Until(search => search.FindElement(By.Name("password")).Displayed);
                 PasswordElement.Clear();
                 PasswordElement.SendKeys(data);
             }
@@ -58,8 +59,7 @@ namespace GoogleLoginTest.Functions
 
         public bool Result()
         {
-            wait.Until(waiting => waiting.Url.Contains(ExpectedResult));
-            return _webDriver.Url.Contains(ExpectedResult);
+            return wait.Until(waiting => waiting.Url.Contains(ExpectedResult));
         }
     }
 }
