@@ -138,7 +138,6 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.CategoryAttribute("negative")]
         [NUnit.Framework.TestCaseAttribute("0", null)]
         [NUnit.Framework.TestCaseAttribute("1", null)]
-        [NUnit.Framework.TestCaseAttribute("2", null)]
         public virtual void SignInToGoogleMailWithIncorrectLogin(string login, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -192,7 +191,6 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.CategoryAttribute("negative")]
         [NUnit.Framework.TestCaseAttribute("0", "0", null)]
         [NUnit.Framework.TestCaseAttribute("1", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("2", "2", null)]
         public virtual void SignInToGoogleMailWithCorrectLoginAndIncorrectPassword(string login, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -206,7 +204,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("login", login);
             argumentsOfScenario.Add("password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign in to Google Mail with correct login and incorrect password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 30
+#line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -226,22 +224,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 31
+#line 30
  testRunner.Given("open the Google website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 32
+#line 31
  testRunner.When(string.Format("enter the \"valid\" \"{0}\" \"login\"", login), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 33
+#line 32
  testRunner.And("click the \"login\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 33
  testRunner.When(string.Format("enter the \"invalid\" \"{0}\" \"password\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 35
+#line 34
  testRunner.And("click the \"password\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 36
+#line 35
  testRunner.Then("expected result isn\'t opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
